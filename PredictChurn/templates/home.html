@@ -1,0 +1,480 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        background-color: white;
+      }
+
+      h1 {
+        margin: 0 auto;
+      }
+
+      .container {
+        background-color: lightgray;
+        margin: 1px auto;
+        border: 1px solid black;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0 5px;
+        margin: 0 auto;
+      }
+
+      .column {
+        margin: 5px 25px;
+        padding: 0 5px;
+      }
+
+      .input_heading {
+        font-size: 18px;
+      }
+
+      .output {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <title>Churn Prediction</title>
+    <div class="container">
+      <div class="row">
+        <h1>Telecom Customer Churn Analysis Prediction</h1>
+        <br />
+        <br />
+        <br />
+        <form action="/" method="POST">
+          <div>
+            <h5>About</h5>
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Senior Citizen</p>
+                <label
+                  ><input type="radio" id="query1" name="query1" value="Yes" />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" id="query1" name="query1" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Gender</p>
+                <label
+                  ><input type="radio" id="query4" name="query4" value="Male" />
+                  Male</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query4"
+                    name="query4"
+                    value="Female"
+                  />
+                  Female</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Partner</p>
+                <label
+                  ><input type="radio" id="query5" name="query5" value="Yes" />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" id="query5" name="query5" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Dependents</p>
+                <label
+                  ><input type="radio" id="query6" name="query6" value="Yes" />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" id="query6" name="query6" value="No" />
+                  No</label
+                >
+              </div>
+            </div>
+            <h5>Services</h5>
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Phone Service</p>
+                <label
+                  ><input type="radio" id="query7" name="query7" value="Yes" />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" id="query7" name="query7" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Multiple Lines</p>
+                <label
+                  ><input type="radio" id="query8" name="query8" value="Yes" />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query8"
+                    name="query8"
+                    value="No phone service"
+                  />
+                  No Phone Service</label
+                >
+                <label
+                  ><input type="radio" id="query8" name="query8" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Internet Service</p>
+                <label
+                  ><input type="radio" id="query9" name="query9" value="DSL" />
+                  DSL</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query9"
+                    name="query9"
+                    value="Fiber optic"
+                  />
+                  Fiber Optic</label
+                >
+                <label
+                  ><input type="radio" id="query9" name="query9" value="No" />
+                  No</label
+                >
+              </div>
+            </div>
+            <h5>Online Services</h5>
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Online Security</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query10"
+                    name="query10"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query10"
+                    name="query10"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query10" name="query10" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Online Backup</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query11"
+                    name="query11"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query11"
+                    name="query11"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query11" name="query11" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Device Protection</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query12"
+                    name="query12"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query12"
+                    name="query12"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query12" name="query12" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Tech Support</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query13"
+                    name="query13"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query13"
+                    name="query13"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query13" name="query13" value="No" />
+                  No</label
+                >
+              </div>
+            </div>
+            <h5>Streaming Services</h5>
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Streaming TV</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query14"
+                    name="query14"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query14"
+                    name="query14"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query14" name="query14" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Streaming Movies</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query15"
+                    name="query15"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query15"
+                    name="query15"
+                    value="No internet service"
+                  />
+                  No Internet Service</label
+                >
+                <label
+                  ><input type="radio" id="query15" name="query15" value="No" />
+                  No</label
+                >
+              </div>
+            </div>
+            <h5>Payment Preferences</h5>
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Contract</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query16"
+                    name="query16"
+                    value="Month-to-month"
+                  />
+                  Month to Month</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query16"
+                    name="query16"
+                    value="One year"
+                  />
+                  One Year</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query16"
+                    name="query16"
+                    value="Two year"
+                  />
+                  Two Years</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Paperless Billing</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query17"
+                    name="query17"
+                    value="Yes"
+                  />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" id="query17" name="query17" value="No" />
+                  No</label
+                >
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Payment Method</p>
+                <label
+                  ><input
+                    type="radio"
+                    id="query18"
+                    name="query18"
+                    value="Bank transfer (automatic)"
+                  />
+                  Bank Transfer (automatic)</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query18"
+                    name="query18"
+                    value="Credit card (automatic)"
+                  />
+                  Credit card (automatic)</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query18"
+                    name="query18"
+                    value="Electronic check"
+                  />
+                  Electronic Cheque</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="query18"
+                    name="query18"
+                    value="Mailed check"
+                  />
+                  Mailed Cheque</label
+                >
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="form-group column">
+                <p class="input_heading">Tenure</p>
+                <input
+                  class="form-control"
+                  rows="2"
+                  id="query19"
+                  name="query19"
+                  rows="2"
+                  cols="5"
+                />
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Monthly Charges</p>
+                <input
+                  class="form-control"
+                  rows="2"
+                  id="query2"
+                  name="query2"
+                  rows="2"
+                  cols="5"
+                />
+              </div>
+              <div class="form-group column">
+                <p class="input_heading">Total Charges</p>
+                <input
+                  class="form-control"
+                  rows="2"
+                  id="query3"
+                  name="query3"
+                  rows="2"
+                  cols="5"
+                />
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary" name="submit">
+              SUBMIT
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="output col-sm-9">
+          <textarea
+            class="form-control"
+            rows="2"
+            id="comment"
+            name="query6"
+            rows="2"
+            cols="5"
+          >
+{{output1}}</textarea
+          >
+          <textarea
+            class="form-control"
+            rows="2"
+            id="comment"
+            name="query7"
+            rows="2"
+            cols="5"
+          >
+{{output2}}</textarea
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
