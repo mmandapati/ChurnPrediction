@@ -8,14 +8,14 @@ from sklearn import metrics
 from flask import Flask, request, render_template
 import pickle
 
-app = Flask("__name__")
+app = Flask(__name__)
 
 df_1 = pd.read_csv("first_telc.csv")
 
 q = ""
 
 
-@app.route("/")
+@app.route('/', methods=['GET'])
 def loadPage():
 	return render_template('home.html', query="")
 
@@ -44,25 +44,25 @@ def predict():
     tenure
     '''
 
-    inputQuery1 = request.form['query1']
-    inputQuery2 = request.form['query2']
-    inputQuery3 = request.form['query3']
-    inputQuery4 = request.form['query4']
-    inputQuery5 = request.form['query5']
-    inputQuery6 = request.form['query6']
-    inputQuery7 = request.form['query7']
-    inputQuery8 = request.form['query8']
-    inputQuery9 = request.form['query9']
-    inputQuery10 = request.form['query10']
-    inputQuery11 = request.form['query11']
-    inputQuery12 = request.form['query12']
-    inputQuery13 = request.form['query13']
-    inputQuery14 = request.form['query14']
-    inputQuery15 = request.form['query15']
-    inputQuery16 = request.form['query16']
-    inputQuery17 = request.form['query17']
-    inputQuery18 = request.form['query18']
-    inputQuery19 = request.form['query19']
+    inputQuery1 = request.form['citizen']
+    inputQuery2 = request.form['monthly-charges']
+    inputQuery3 = request.form['total-charges']
+    inputQuery4 = request.form['gender']
+    inputQuery5 = request.form['partner']
+    inputQuery6 = request.form['dependents']
+    inputQuery7 = request.form['phone-service']
+    inputQuery8 = request.form['multiple-lines']
+    inputQuery9 = request.form['internet-service']
+    inputQuery10 = request.form['online-security']
+    inputQuery11 = request.form['online-backup']
+    inputQuery12 = request.form['device-protect']
+    inputQuery13 = request.form['tect-support']
+    inputQuery14 = request.form['streaming-tv']
+    inputQuery15 = request.form['streaming-movies']
+    inputQuery16 = request.form['contract']
+    inputQuery17 = request.form['paperless-billing']
+    inputQuery18 = request.form['payment-method']
+    inputQuery19 = request.form['tenure']
 
     model = pickle.load(open("model.sav", "rb"))
 
@@ -121,32 +121,15 @@ def predict():
     probablity = model.predict_proba(new_df__dummies.tail(1))[:, 1]
 
     if single == 1:
-        o1 = "This customer is likely to be churned!!"
+        o1 = "is likely to be churned!!"
         o2 = "Confidence: {}".format(probablity*100)
     else:
-        o1 = "This customer is likely to continue!!"
+        o1 = "is likely to continue!!"
         o2 = "Confidence: {}".format(probablity*100)
 
-    return render_template('home.html', output1=o1, output2=o2,
-                           query1=request.form['query1'],
-                           query2=request.form['query2'],
-                           query3=request.form['query3'],
-                           query4=request.form['query4'],
-                           query5=request.form['query5'],
-                           query6=request.form['query6'],
-                           query7=request.form['query7'],
-                           query8=request.form['query8'],
-                           query9=request.form['query9'],
-                           query10=request.form['query10'],
-                           query11=request.form['query11'],
-                           query12=request.form['query12'],
-                           query13=request.form['query13'],
-                           query14=request.form['query14'],
-                           query15=request.form['query15'],
-                           query16=request.form['query16'],
-                           query17=request.form['query17'],
-                           query18=request.form['query18'],
-                           query19=request.form['query19'])
+    return render_template('output.html', output1=o1, output2=o2,
+                           firstName=request.form['firstName'],
+                           lastName=request.form['lastName'])
 
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=3000)
+    app.run(host='0.0.0.0', port=8080)

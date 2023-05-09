@@ -1,480 +1,348 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style>
-      body {
-        background-color: white;
-      }
 
-      h1 {
-        margin: 0 auto;
-      }
-
-      .container {
-        background-color: lightgray;
-        margin: 1px auto;
-        border: 1px solid black;
-      }
-
-      .row {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0 5px;
-        margin: 0 auto;
-      }
-
-      .column {
-        margin: 5px 25px;
-        padding: 0 5px;
-      }
-
-      .input_heading {
-        font-size: 18px;
-      }
-
-      .output {
-        margin: 0 auto;
-      }
-    </style>
-  </head>
-
-  <body>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
     <title>Churn Prediction</title>
-    <div class="container">
-      <div class="row">
-        <h1>Telecom Customer Churn Analysis Prediction</h1>
-        <br />
-        <br />
-        <br />
-        <form action="/" method="POST">
-          <div>
-            <h5>About</h5>
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Senior Citizen</p>
-                <label
-                  ><input type="radio" id="query1" name="query1" value="Yes" />
-                  Yes</label
-                >
-                <label
-                  ><input type="radio" id="query1" name="query1" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Gender</p>
-                <label
-                  ><input type="radio" id="query4" name="query4" value="Male" />
-                  Male</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query4"
-                    name="query4"
-                    value="Female"
-                  />
-                  Female</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Partner</p>
-                <label
-                  ><input type="radio" id="query5" name="query5" value="Yes" />
-                  Yes</label
-                >
-                <label
-                  ><input type="radio" id="query5" name="query5" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Dependents</p>
-                <label
-                  ><input type="radio" id="query6" name="query6" value="Yes" />
-                  Yes</label
-                >
-                <label
-                  ><input type="radio" id="query6" name="query6" value="No" />
-                  No</label
-                >
-              </div>
-            </div>
-            <h5>Services</h5>
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Phone Service</p>
-                <label
-                  ><input type="radio" id="query7" name="query7" value="Yes" />
-                  Yes</label
-                >
-                <label
-                  ><input type="radio" id="query7" name="query7" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Multiple Lines</p>
-                <label
-                  ><input type="radio" id="query8" name="query8" value="Yes" />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query8"
-                    name="query8"
-                    value="No phone service"
-                  />
-                  No Phone Service</label
-                >
-                <label
-                  ><input type="radio" id="query8" name="query8" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Internet Service</p>
-                <label
-                  ><input type="radio" id="query9" name="query9" value="DSL" />
-                  DSL</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query9"
-                    name="query9"
-                    value="Fiber optic"
-                  />
-                  Fiber Optic</label
-                >
-                <label
-                  ><input type="radio" id="query9" name="query9" value="No" />
-                  No</label
-                >
-              </div>
-            </div>
-            <h5>Online Services</h5>
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Online Security</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query10"
-                    name="query10"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query10"
-                    name="query10"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query10" name="query10" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Online Backup</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query11"
-                    name="query11"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query11"
-                    name="query11"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query11" name="query11" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Device Protection</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query12"
-                    name="query12"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query12"
-                    name="query12"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query12" name="query12" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Tech Support</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query13"
-                    name="query13"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query13"
-                    name="query13"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query13" name="query13" value="No" />
-                  No</label
-                >
-              </div>
-            </div>
-            <h5>Streaming Services</h5>
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Streaming TV</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query14"
-                    name="query14"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query14"
-                    name="query14"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query14" name="query14" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Streaming Movies</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query15"
-                    name="query15"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query15"
-                    name="query15"
-                    value="No internet service"
-                  />
-                  No Internet Service</label
-                >
-                <label
-                  ><input type="radio" id="query15" name="query15" value="No" />
-                  No</label
-                >
-              </div>
-            </div>
-            <h5>Payment Preferences</h5>
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Contract</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query16"
-                    name="query16"
-                    value="Month-to-month"
-                  />
-                  Month to Month</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query16"
-                    name="query16"
-                    value="One year"
-                  />
-                  One Year</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query16"
-                    name="query16"
-                    value="Two year"
-                  />
-                  Two Years</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Paperless Billing</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query17"
-                    name="query17"
-                    value="Yes"
-                  />
-                  Yes</label
-                >
-                <label
-                  ><input type="radio" id="query17" name="query17" value="No" />
-                  No</label
-                >
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Payment Method</p>
-                <label
-                  ><input
-                    type="radio"
-                    id="query18"
-                    name="query18"
-                    value="Bank transfer (automatic)"
-                  />
-                  Bank Transfer (automatic)</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query18"
-                    name="query18"
-                    value="Credit card (automatic)"
-                  />
-                  Credit card (automatic)</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query18"
-                    name="query18"
-                    value="Electronic check"
-                  />
-                  Electronic Cheque</label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    id="query18"
-                    name="query18"
-                    value="Mailed check"
-                  />
-                  Mailed Cheque</label
-                >
-              </div>
-            </div>
-            <br />
-            <div class="row">
-              <div class="form-group column">
-                <p class="input_heading">Tenure</p>
-                <input
-                  class="form-control"
-                  rows="2"
-                  id="query19"
-                  name="query19"
-                  rows="2"
-                  cols="5"
-                />
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Monthly Charges</p>
-                <input
-                  class="form-control"
-                  rows="2"
-                  id="query2"
-                  name="query2"
-                  rows="2"
-                  cols="5"
-                />
-              </div>
-              <div class="form-group column">
-                <p class="input_heading">Total Charges</p>
-                <input
-                  class="form-control"
-                  rows="2"
-                  id="query3"
-                  name="query3"
-                  rows="2"
-                  cols="5"
-                />
-              </div>
-            </div>
-          </div>
-          <br />
-          <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary" name="submit">
-              SUBMIT
-            </button>
-          </div>
-        </form>
-      </div>
 
-      <div class="row">
-        <div class="output col-sm-9">
-          <textarea
-            class="form-control"
-            rows="2"
-            id="comment"
-            name="query6"
-            rows="2"
-            cols="5"
-          >
-{{output1}}</textarea
-          >
-          <textarea
-            class="form-control"
-            rows="2"
-            id="comment"
-            name="query7"
-            rows="2"
-            cols="5"
-          >
-{{output2}}</textarea
-          >
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+
+  </head>
+  <body class="bg-body-tertiary">
+
+    <div class=" container">
+      <main>
+        <div class="py-5 text-center">
+          <h2>Telecom Customer Churn Analysis Prediction</h2>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-md-9 col-lg-10">
+            <h4 class="mb-3">About</h4>
+            <form action="/" method="POST" class="needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">First name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    name="firstName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">Last name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="gender" class="form-label">Gender</label>
+                  <select class="form-select" id="gender" name="gender" required>
+                    <option value="">Choose...</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide your Gender.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="citizen" class="form-label"
+                    >Are you Senior Citizen?</label
+                  >
+                  <select class="form-select" id="citizen" name="citizen" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide value for Senior Citizen.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="partner" class="form-label">Married?</label>
+                  <select class="form-select" id="partner" name="partner" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide your Marital Status.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="dependents" class="form-label">Dependents</label>
+                  <select class="form-select" id="dependents" name="dependents" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide if you have dependents.
+                  </div>
+                </div>
+
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Services</h4>
+
+              <div class="col-md-4">
+                <label for="phone-service" class="form-label"
+                  >Have a Phone Service?</label
+                >
+                <select class="form-select" id="phone-service" name="phone-service" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select if you have a phone service
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="multiple-lines" class="form-label">Have multiple lines?</label>
+                <select class="form-select" id="multiple-lines" name="multiple-lines" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No phone service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide if you have multiple lines.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="internet-service" class="form-label">Internet Service</label>
+                <select class="form-select" id="internet-service" name="internet-service" required>
+                  <option value="">Choose...</option>
+                  <option>DSL</option>
+                  <option>Fiber optic</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide your internet service.
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Online Services</h4>
+
+              <div class="col-md-3">
+                <label for="online-security" class="form-label"
+                  >Online Security?</label
+                >
+                <select class="form-select" id="online-security" name="online-security" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select if you have an online security
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="online-backup" class="form-label">Online Backup?</label>
+                <select class="form-select" id="online-backup" name="online-backup" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select if you have an online backup.
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="device-protect" class="form-label">Device Protection</label>
+                <select class="form-select" id="device-protect" name="device-protect" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide your Device Protection.
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="tect-support" class="form-label">Tech Support</label>
+                <select class="form-select" id="tect-support" name="tect-support" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide your Techincal Support.
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Streaming Services</h4>
+
+              <div class="col-md-4">
+                <label for="streaming-tv" class="form-label"
+                  >Streaming TV?</label
+                >
+                <select class="form-select" id="streaming-tv" name="streaming-tv" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select if you have Streaming TV
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="streaming-movies" class="form-label">Streaming Movies?</label>
+                <select class="form-select" id="streaming-movies" name="streaming-movies" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide if you have Streaming Movies.
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Payment Preferences</h4>
+
+              <div class="col-md-4">
+                <label for="contract" class="form-label">Contract</label>
+                <select class="form-select" id="contract" name="contract" required>
+                  <option value="">Choose...</option>
+                  <option>Month-to-month</option>
+                  <option>One year</option>
+                  <option>Two year</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide if you have Contract.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="paperless-billing" class="form-label">Paperless Billing</label>
+                <select class="form-select" id="paperless-billing" name="paperless-billing" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide if you have Paperless Billing.
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="payment-method" class="form-label">Payment Method</label>
+                <select class="form-select" id="payment-method" name="payment-method" required>
+                  <option value="">Choose...</option>
+                  <option>Bank transfer (automatic)</option>
+                  <option>Credit card (automatic)</option>
+                  <option>Electronic check</option>
+                  <option>Mailed check</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide if you have Payment Method.
+                </div>
+              </div>
+
+              <div class="row gy-3">
+                <div class="col-sm-4">
+                  <label for="tenure" class="form-label">Tenure</label>
+                  <input
+                    class="form-control"
+                    id="tenure"
+                    name="tenure"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Enter Valid Tenure.
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <label for="monthly-charges" class="form-label">Monthly Charges</label>
+                  <input
+                    class="form-control"
+                    id="monthly-charges"
+                    name="monthly-charges"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Enter Valid Monthly Charges.
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <label for="total-charges" class="form-label">Total Charges</label>
+                  <input
+                    class="form-control"
+                    id="total-charges"
+                    name="total-charges"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Enter Valid Total Charges.
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <button class="w-50 btn btn-primary btn-lg" type="submit">
+                Get Predictions
+              </button>
+              </br>
+              </div>
+              <div>
+              </br>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>
